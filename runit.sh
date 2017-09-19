@@ -24,12 +24,12 @@ else
 fi
 
 # Clean up our mess from last time
-dropdb -U postgres --if-exists $DBNAME
+dropdb --if-exists $DBNAME
 
-createdb -U postgres $DBNAME "$DBDESC"
+createdb $DBNAME "$DBDESC"
 
-psql $DBNAME postgres < schema/postgresql.sql
-psql $DBNAME postgres < examples/postgresql-data.sql
+psql $DBNAME < schema/postgresql.sql
+psql $DBNAME < examples/postgresql-data.sql
 
 cat examples/token-server.conf \
 | sed -e "s/DBNAME/$DBNAME/" \
@@ -42,5 +42,5 @@ $BIN_DIR/tokenserver "$TESTCONF"
 
 # Clean up our mess
 echo "Cleaning up!"
-dropdb -U postgres $DBNAME
+dropdb $DBNAME
 rm $TESTCONF

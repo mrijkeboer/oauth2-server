@@ -1,1 +1,7 @@
-stack-7.8.yaml
+flags: {}
+packages:
+- '.'
+extra-deps:
+- lens-properties-4.11
+resolver: lts-6.35
+system-ghc: true

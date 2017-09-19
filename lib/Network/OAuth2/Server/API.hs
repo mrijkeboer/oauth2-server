@@ -72,10 +72,6 @@ import           Network.OAuth2.Server.Store      hiding (logName)
 import           Network.OAuth2.Server.UI
 
 
--- | Temporary, until there is an instance in Yesod.
-instance MonadHandler m => MonadHandler (ExceptT e m) where
-    type HandlerSite (ExceptT e m) = HandlerSite m
-    liftHandlerT = lift . liftHandlerT
 
 -- Logging
 
